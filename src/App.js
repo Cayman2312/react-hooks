@@ -1,23 +1,21 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
-import { Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import About from './pages/About';
 import Profile from './pages/Profile';
 
 function App() {
   return (
-    <React.Fragment>
+    <BrowserRouter>
       <Navbar />
-      <div className="container pt-4">
-        <h1>Hello world</h1>
-      </div>
+
       <Switch>
+        <Route path="/" exact component={Home} />
         <Route path="/about" component={About} />
-        <Route path="/profile" component={Profile} />
-        <Route path="/" component={Home} />
+        <Route path="/profile/:name" component={Profile} />
       </Switch>
-    </React.Fragment>
+    </BrowserRouter>
   );
 }
 

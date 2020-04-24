@@ -16,11 +16,6 @@ export default function Navbar() {
             Информация
           </NavLink>
         </li>
-        <li className="nav-item">
-          <NavLink to="/profile" className="nav-link">
-            Профайл
-          </NavLink>
-        </li>
       </ul>
     </nav>
   );

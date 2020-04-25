@@ -4,20 +4,24 @@ import Home from './pages/Home';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import About from './pages/About';
 import Profile from './pages/Profile';
+import Alert from './components/Alert';
+import { AlertState } from './context/alert/AlertState';
 
 function App() {
   return (
-    <BrowserRouter>
-      <Navbar />
-
-      <Switch>
+    <AlertState>
+      <BrowserRouter>
+        <Navbar />
         <div className="container">
-          <Route path="/" exact component={Home} />
-          <Route path="/about" component={About} />
-          <Route path="/profile/:name" component={Profile} />
+          <Alert alert={{ text: 'text' }} />
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/about" component={About} />
+            <Route path="/profile/:name" component={Profile} />
+          </Switch>
         </div>
-      </Switch>
-    </BrowserRouter>
+      </BrowserRouter>
+    </AlertState>
   );
 }
 

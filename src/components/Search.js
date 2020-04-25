@@ -1,10 +1,9 @@
 import React, { useContext, useState } from 'react';
 import { AlertContext } from '../context/alert/AlertContext';
-import { HIDE_ALERT } from '../context/types';
 import { GithubContext } from '../context/github/GithubContext';
 
 export const Search = () => {
-  const { show } = useContext(AlertContext);
+  const alert = useContext(AlertContext);
   const [value, setValue] = useState('');
   const github = useContext(GithubContext);
 
@@ -12,10 +11,13 @@ export const Search = () => {
     if (e.key !== 'Enter') {
       return;
     }
+    github.clearUsers();
+
     if (value.trim()) {
+      alert.hide();
       github.search(value.trim());
     } else {
-      show('Введите данные пользователя!');
+      alert.show('Введите данные пользователя!');
     }
   };
 
